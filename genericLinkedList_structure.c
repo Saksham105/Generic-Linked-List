@@ -89,6 +89,20 @@ Node* insertAtHead(Node* head, void *data, DataType type) {
     return newNode;
 }
 
+// function to insert a node at tail
+Node* insertAtTail(Node* head, void *data, DataType type) {
+    Node* newNode = createNode(data, type);
+    if (!head) {
+        return newNode;
+    }
+    Node *tail = head;
+    while(tail->next != NULL)
+        tail = tail->next;
+    tail->next = newNode;
+    newNode->prev = tail;
+    return head;
+}
+
 // function to free list
 void freeList(Node *head) {
     Node *temp = head;
