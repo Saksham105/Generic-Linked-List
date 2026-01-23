@@ -78,9 +78,9 @@ int main(void) {
 
     /*----------------------------------------------------------------------------------*/
     puts(line);
-    puts("[AFTER CREATION] Displaying list");
+    puts("[AFTER CREATION] Displaying list:");
     status = show_list(list, &show_struct_data);
-    assert(status == SUCCESS);
+    assert(status == LIST_EMPTY);
 
 
 
@@ -141,54 +141,54 @@ int main(void) {
     puts(line);
     list_length = get_list_length(list);
     fprintf(stdout, "List length: %d\n", list_length);
+    puts("");
 
 
 
     /*----------------------------------------------------------------------------------*/
     puts(line);
-    fprintf(stdout, "Fetch first node: ");
+    puts("Fetch first node: ");
     node_t *first_node = NULL;
-    get_front(list, &first_node);
-    show_data(first_node);
+    status = get_front(list, &first_node);
+    assert(status == SUCCESS);
+    status = show_data(first_node, &show_struct_data);
+    assert(status == SUCCESS);
+    puts(""); // new line
 
 
 
     /*----------------------------------------------------------------------------------*/
     puts(line);
-    fprintf(stdout, "Fetch last node: ");
+    puts("Fetch last node: ");
     node_t *last_node = NULL;
-    get_back(list, &last_node);
-    show_data(last_node);
+    status = get_back(list, &last_node);
+    assert(status == SUCCESS);
+    status = show_data(last_node, &show_struct_data);
+    assert(status == SUCCESS);
+    puts("");
 
 
 
     /*----------------------------------------------------------------------------------*/
     puts(line);
-    fprintf(stdout, "Fetch node after integer 100: ");
+    fprintf(stdout, "Fetch node after integer [%d]: ", int_data);
     node_t *middle_node = NULL;
-    get_after(list, &int_data, INTEGER, &middle_node);
-    show_data(middle_node);
+    status = get_after(list, &int_data, INTEGER, &middle_node);
+    assert(status == SUCCESS);
+    status = show_data(middle_node, &show_struct_data);
+    assert(status == SUCCESS);
+    puts("");
 
 
 
     /*----------------------------------------------------------------------------------*/
     puts(line);
-    fprintf(stdout, "Fetch node before integer 100: ");
-    get_before(list, &int_data, INTEGER, &middle_node);
-    show_data(middle_node);
-
-
-
-    /*----------------------------------------------------------------------------------*/
-    puts(line);
-    fprintf(stdout, "Searching for structure data: {%d, %s}\n", customStruct_data.int_data,customStruct_data.string_data);
-    status = contains_data(list, &customStruct_data, STRUCTURE);
-    assert(status == TRUE);
-    if(status == TRUE) {
-        puts("Data found.");
-    } else {
-        puts("Data not found.!");
-    }
+    fprintf(stdout, "Fetch node before integer [%d]: ", int_data);
+    status = get_before(list, &int_data, INTEGER, &middle_node);
+    assert(status == SUCCESS);
+    status = show_data(middle_node, &show_struct_data);
+    assert(status == SUCCESS);
+    puts("");
 
 
 
@@ -207,8 +207,8 @@ int main(void) {
 
     /*----------------------------------------------------------------------------------*/
     puts(line);
-    fprintf(stdout, "Searching for structure data: {%d, %s}\n", customStruct_data.int_data,customStruct_data.string_data);
-    status = contains_data(list, &customStruct_data, STRUCTURE);
+    fprintf(stdout, "Searching for integer data: [%d]\n", int_data);
+    status = contains_data(list, &int_data, INTEGER);
     assert(status == TRUE);
     if(status == TRUE) {
         puts("Data found.");
@@ -220,8 +220,8 @@ int main(void) {
 
     /*----------------------------------------------------------------------------------*/
     puts(line);
-    fprintf(stdout, "Searching for structure data: {%d, %s}\n", customStruct_data.int_data,customStruct_data.string_data);
-    status = contains_data(list, &customStruct_data, STRUCTURE);
+    fprintf(stdout, "Searching for character data: [%c]\n", char_data);
+    status = contains_data(list, &char_data, CHARACTER);
     assert(status == TRUE);
     if(status == TRUE) {
         puts("Data found.");
@@ -233,8 +233,8 @@ int main(void) {
 
     /*----------------------------------------------------------------------------------*/
     puts(line);
-    fprintf(stdout, "Searching for structure data: {%d, %s}\n", customStruct_data.int_data,customStruct_data.string_data);
-    status = contains_data(list, &customStruct_data, STRUCTURE);
+    fprintf(stdout, "Searching for double data: [%lf]\n", double_data);
+    status = contains_data(list, &double_data, DOUBLE);
     assert(status == TRUE);
     if(status == TRUE) {
         puts("Data found.");
@@ -246,29 +246,44 @@ int main(void) {
 
     /*----------------------------------------------------------------------------------*/
     puts(line);
-    fprintf(stdout, "Pop first node");
+    fprintf(stdout, "Searching for string data: [%s]\n", string_data);
+    status = contains_data(list, &string_data, STRING);
+    assert(status == TRUE);
+    if(status == TRUE) {
+        puts("Data found.");
+    } else {
+        puts("Data not found.!");
+    }
+
+
+
+    /*----------------------------------------------------------------------------------*/
+    puts(line);
+    puts("Pop first node");
     pop_front(list);
 
 
 
     /*----------------------------------------------------------------------------------*/
     puts(line);
-    fprintf(stdout, "Pop last node");
+    puts("Pop last node");
     pop_back(list);
 
 
 
     /*----------------------------------------------------------------------------------*/
     puts(line);
-    fprintf(stdout, "Pop node after double 9.81");
+    fprintf(stdout, "Pop node after double [%lf]", double_data);
     pop_after(list, &double_data, DOUBLE);
+    puts("");
 
 
 
     /*----------------------------------------------------------------------------------*/
     puts(line);
-    fprintf(stdout, "Pop node before integer 100");
+    fprintf(stdout, "Pop node before integer [%d]", int_data);
     pop_before(list, &int_data, INTEGER);
+    puts("");
 
 
 

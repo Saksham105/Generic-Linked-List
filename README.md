@@ -1,6 +1,13 @@
 # Generic-Linked-List
 Generic linked list like python
 
+
+# Command to run project
+    >gcc -c genlist.c genlist_main.c
+    >gcc genlist.o genlist_main.o -o runApplication
+    >runApplication.exe
+
+
 # Problem statement
     1.  The "Type Explosion" Problem
         In a strictly typed language like C, if you need a list for integers, you write an IntList. If you then need one for floats, you write a FloatList. If your project has 20 different struct types, you would be forced to write 20 nearly identical sets of functions.
@@ -34,6 +41,7 @@ Generic linked list like python
             deallocate list memory
     4.  To display the structure data, client is expected to write its own display logic.
     5.  That logic/function is used by the server to display client structure data.
+
 
 # Concepts used
     1.  The void* pointer for data storage

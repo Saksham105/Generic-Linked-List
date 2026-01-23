@@ -11,7 +11,10 @@ enum Status {
     TRUE                    =   1,
     FALSE                   =   0,
     LIST_DATA_NOT_FOUND     =   2,
-    LIST_EMPTY              =   3
+    LIST_EMPTY              =   3,
+    INVALID_TYPE            =   0,
+    INVALID_DATA            =   0,
+    MEMORY_ERROR            =   -1
 };
 
 
@@ -50,7 +53,7 @@ size_t STRUCTURE_SIZE;
 
 
 /*------------SET THE CLIENT STRUCTURE SIZE AT THE SERVER SIDE------------*/
-void export_structure(size_t size);
+void export_structure(const size_t size);
 
 
 /*------------CREATE LIST HEAD NODE FUNCTION PROTOTYPE------------*/
@@ -67,23 +70,23 @@ status_t put_before(list_t*, void*, const type_t, void*, const type_t);
 /*------------DELETE NODE FUNCTION PROTOTYPE------------*/
 status_t pop_front(list_t*);
 status_t pop_back(list_t*);
-status_t pop_after(list_t*, void*, const type_t);
-status_t pop_before(list_t*, void*, const type_t);
-status_t remove_data(list_t*, void*, const type_t);
+status_t pop_after(list_t*, const void*, const type_t);
+status_t pop_before(list_t*, const void*, const type_t);
+status_t remove_data(list_t*, const void*, const type_t);
 
 
 /*------------GET NODE FUNCTION PROTOTYPE------------*/
 status_t get_front(const list_t*, node_t**);
 status_t get_back(const list_t*, node_t**);
-status_t get_after(const list_t*, void*, const type_t, node_t**);
-status_t get_before(const list_t*, void*, const type_t, node_t**);
+status_t get_after(const list_t*, const void*, const type_t, node_t**);
+status_t get_before(const list_t*, const void*, const type_t, node_t**);
 
 
 /*------------MISCELLANEOUS FUNCTIONS------------*/
 status_t show_list(const list_t*, void (*struct_display)(void*));
-void show_data(const node_t*);
-status_t contains_data(const list_t*, void*, const type_t);
-len_t get_list_length(const list_t*);
+status_t show_data(const node_t*, void (*struct_display)(void*));
+status_t contains_data(const list_t*, const void*, const type_t);
+len_t get_list_length(const list_t*);   
 bool_t isEmpty(const list_t*);
 
 
@@ -93,11 +96,11 @@ list_t* destroy_list(list_t*);
 
 
 /*------------HELPER FUNCTION PROTOTYPE------------*/
-void* xmalloc(size_t);
+void* xmalloc(const size_t);
 node_t* create_node(void *, const type_t);
 void generic_insert(node_t*, node_t*, node_t*);
 void generic_delete(node_t*);
-node_t* search_node(const list_t*, void*, const type_t type);
+node_t* search_node(const list_t*, const void*, const type_t type);
 
 
 #endif
