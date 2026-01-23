@@ -20,7 +20,15 @@
 
 ## Overview
 
-This project implements a **Generic Doubly Linked List in C**, allowing data of multiple types (integer, double, char, string, and custom structures) to be stored using void pointers and runtime type tagging. The library is split into a "server side" (the core, reusable, generic linked list code) and a "client side" (demonstration/driver code that uses the linked list for specific types).
+This project implements a **Generic Doubly Linked List in C**, inspired by the versatile `list` in Python. It enables storage of elements with arbitrary data types (integer, double, char, string, and custom structures) using void pointers and runtime type tagging. The codebase is divided into a "server side" (the core, reusable, generic linked list code) and a "client side" (demonstration/driver code that uses the linked list for specific types).
+
+### Why Use a Generic Linked List?
+
+The need for a generic linked list arises from the following reasons:
+
+1. **Type Agnosticism:** Unlike standard C linked lists, this implementation can store and manage elements of any data type (similar to Python lists), greatly increasing flexibility and reducing code duplication for different element types.
+2. **Reusability:** The same data structure and set of functions can be reused across projects or modules regardless of stored type, reducing maintenance effort and fostering code modularity.
+3. **Complex Data Management:** With the ability to handle custom structures, the generic list enables the creation of advanced data containers for real-world applications, all with strong runtime type checking for safer operations.
 
 ---
 
