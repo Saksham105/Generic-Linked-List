@@ -220,11 +220,10 @@ struct List_Node {
 
 ## Appendix: Error Codes and Status
 
-- `SUCCESS`: Operation succeeded.
-- `FAILED`: Operation failed.
-- `LIST_DATA_NOT_FOUND`: Data not found in list.
-- `LIST_EMPTY`: List is empty or not created.
-- `INVALID_TYPE`: Data type is invalid.
-- `INVALID_DATA`: Data is invalid or NULL.
-- `MEMORY_ERROR`: Could not allocate memory (typically fatal, treat as out-of-memory).
-
+1. `SUCCESS`: Operation succeeded.
+2. `FAILED`: Operation failed.
+3. `LIST_DATA_NOT_FOUND`: Data not found in list.
+4. `LIST_EMPTY`: List is empty or not created.
+5. `INVALID_TYPE`: Data type is invalid.
+6. `INVALID_DATA`: Data is invalid or NULL.
+7. `MEMORY_ERROR`: Could not allocate memory (typically fatal, treat as out-of-memory).
