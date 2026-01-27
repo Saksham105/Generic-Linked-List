@@ -15,6 +15,7 @@
     - [Sample Usage Flow](#sample-usage-flow)
     - [Function Calls (Client Flow)](#function-calls-client-flow)
 5. [Appendix: Error Codes](#appendix-error-codes)
+6. [End](#end)
 
 ---
 
@@ -235,3 +236,7 @@ struct List_Node {
 5. `INVALID_TYPE`: Data type is invalid.
 6. `INVALID_DATA`: Data is invalid or NULL.
 7. `MEMORY_ERROR`: Could not allocate memory (typically fatal, treat as out-of-memory).
+
+## End: 
+
+1. Thus the
