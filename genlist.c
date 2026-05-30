@@ -11,6 +11,7 @@ void export_structure(const size_t size)
     /* If passing size of structure failed, set default to 8 bytes*/
     if(size <= 0) {
         STRUCTURE_SIZE = 8; // bydefault set 8 bytes
+        return;
     }
 
     STRUCTURE_SIZE = size;
